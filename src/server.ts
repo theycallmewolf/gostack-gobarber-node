@@ -1,11 +1,23 @@
 import express from 'express';
 
-const app = express();
+const routes = express();
+routes.use(express.json());
 
-app.get('/', (request, response) => {
+routes.get('/', (request, response) => {
   return response.json({ message: 'hello wolf' });
 })
 
-app.listen(3333, () => {
+routes.post('/users', (request, response) => {
+  const { name, email } = request.body;
+
+  const user = {
+    name,
+    email,
+  }
+
+  return response.json(user);
+})
+
+routes.listen(3333, () => {
   console.log('server started on port 3333 🐺🤟')
 })
