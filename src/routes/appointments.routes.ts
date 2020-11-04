@@ -5,6 +5,10 @@ import AppointmentsRepository from '../repositories/AppointmentsRepository'
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
 
+appointmentsRouter.get('/', (request, response) => {
+  const appointments = appointmentsRepository.all();
+  return response.json(appointments);
+});
 
 // POST http://localhost:3333/appointments
 appointmentsRouter.post('/', (request, response) => {
