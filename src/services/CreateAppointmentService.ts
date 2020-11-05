@@ -16,6 +16,7 @@ class CreateAppointmentService {
   }
 
   public execute({ provider, date }: RequestDTO) {
+    
     const appointmentDate = startOfHour(date);
 
     const findAppointmentInSameDate = this.appointmentsRepository.findByDate(appointmentDate);
