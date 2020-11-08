@@ -12,7 +12,7 @@ export class CreateAppointments1604664727822 implements MigrationInterface {
         name: 'appointments',
         columns: [{
           name: 'id',
-          type: 'varchar', // normally an integer but in this case is an varchar, since we are using uuid that returns a string
+          type: 'uuid', // normally an integer but in this case is an varchar, since we are using uuid that returns a string
           isPrimary: true,
           generationStrategy: 'uuid',
           default: 'uuid_generate_v4()',
