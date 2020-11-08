@@ -1,6 +1,9 @@
 import { createConnection } from 'typeorm';
 
-createConnection({
-  type: 'postgres',
-  //
-});
+createConnection();
+
+// in case of not using ormconfig.js
+// createConnection({
+//   type: 'postgres',
+//   //
+// });

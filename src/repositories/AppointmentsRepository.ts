@@ -14,4 +14,3 @@ class AppointmentsRepository extends Repository<Appointment> {
 }
 
 export default AppointmentsRepository;
-

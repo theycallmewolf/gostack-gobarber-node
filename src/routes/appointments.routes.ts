@@ -8,9 +8,9 @@ const appointmentsRouter = Router();
 
 
 // GET
-appointmentsRouter.get('/', (request, response) => {
+appointmentsRouter.get('/', async (request, response) => {
   const appointmentsRepository = getCustomRepository(AppointmentsRepository);
-  const appointments = appointmentsRepository.find();
+  const appointments = await appointmentsRepository.find();
   return response.json(appointments);
 });
 

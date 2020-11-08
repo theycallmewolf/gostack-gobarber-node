@@ -1,10 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-interface AppointmentConstructorDTO {
-  provider: string;
-  date: Date;
-}
-
 @Entity('appointments')
 class Appointment {
 
