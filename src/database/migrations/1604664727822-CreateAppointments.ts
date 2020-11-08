@@ -26,6 +26,16 @@ export class CreateAppointments1604664727822 implements MigrationInterface {
           name: 'date',
           type: 'timestamp with time zone', // 'timestamp with time zone' apenas existe no postgres guardando o horário e fuso-horário, se usarmos outra db temos de colocar apenas 'timestamp'
           isNullable: false,
+        },
+        {
+          name: 'created_at',
+          type: 'timestamp',
+          default: 'now()'
+        },
+        {
+          name: 'updated_at',
+          type: 'timestamp',
+          default: 'now()'
         }
         ]
       })
