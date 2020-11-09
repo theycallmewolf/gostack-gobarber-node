@@ -1,7 +1,6 @@
 import User from '../models/User';
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
-import User from '../models/User';
 
 interface Request {
   email: string;
