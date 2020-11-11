@@ -1,8 +1,8 @@
-import User from '../models/User';
-import { getRepository } from 'typeorm';
-import { compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
-import authConfig from '../config/auth';
+import User from "../models/User";
+import { getRepository } from "typeorm";
+import { compare } from "bcryptjs";
+import { sign } from "jsonwebtoken";
+import authConfig from "../config/auth";
 
 interface Request {
   email: string;
@@ -19,17 +19,17 @@ class AuthenticateUserService {
     const usersRepository = getRepository(User);
 
     const user = await usersRepository.findOne({
-      where: { email }
-    })
+      where: { email },
+    });
 
     if (!user) {
-      throw new Error('wrong email/password combination');
+      throw new Error("wrong email/password combination");
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new Error('wrong email/password combination');
+      throw new Error("wrong email/password combination");
     }
 
     const { secret, expiresIn } = authConfig.jwt;
@@ -41,7 +41,7 @@ class AuthenticateUserService {
     });
 
     return { user, token };
-  };
+  }
 }
 
 export default AuthenticateUserService;

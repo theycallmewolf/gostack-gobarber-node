@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import AuthenticateUserService from '../services/AuthenticateUserService';
+import { Router } from "express";
+import AuthenticateUserService from "../services/AuthenticateUserService";
 const sessionsRouter = Router();
 
 // POST
-sessionsRouter.post('/', async (request, response) => {
+sessionsRouter.post("/", async (request, response) => {
   try {
     const { email, password } = request.body;
 
@@ -11,8 +11,8 @@ sessionsRouter.post('/', async (request, response) => {
 
     const { user, token } = await authenticateUser.execute({
       email,
-      password
-    })
+      password,
+    });
 
     const userWithoutPassword = {
       id: user.id,
@@ -20,11 +20,11 @@ sessionsRouter.post('/', async (request, response) => {
       email: user.email,
       created_at: user.created_at,
       updated_at: user.updated_at,
-    }
+    };
 
     return response.json({ userWithoutPassword, token });
   } catch (err) {
-    return response.status(400).json({ error: err.message })
+    return response.status(400).json({ error: err.message });
   }
 });
 

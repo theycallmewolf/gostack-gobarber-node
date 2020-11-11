@@ -1,5 +1,6 @@
 node_modules
 .vscode
+.prettierignore
 
 #handle temporary folder
 tmp/*
