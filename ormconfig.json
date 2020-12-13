@@ -6,7 +6,7 @@
   "password": "wolf",
   "database": "gostack_gobarber",
   "entities": [
-    "./src/modules/**/infra/typeorm/entities/*.ts."
+    "./src/modules/**/infra/typeorm/entities/*.ts"
   ],
   "migrations": [
     "./src/shared/typeorm/migrations/*.ts"
