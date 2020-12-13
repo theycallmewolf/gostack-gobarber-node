@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 
+import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import uploadConfig from '@config/upload';
 import CreateUserService from '@modules/users/services/CreateUserService';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
@@ -12,9 +13,9 @@ const upload = multer(uploadConfig);
 // POST
 usersRouter.post('/', async (request, response) => {
   const { name, email, password } = request.body;
-
-  const createUser = new CreateUserService();
-
+  
+  const usersRepository = new UsersRepository();
+  const createUser = new CreateUserService(usersRepository);
   const user = await createUser.execute({ name, email, password });
 
   const userWithoutPassword = {
@@ -34,7 +35,8 @@ usersRouter.patch(
   ensureAuthenticated,
   upload.single('avatar'),
   async (request, response) => {
-    const UpdateUserAvatar = new UpdateUserAvatarService();
+    const usersRepository = new UsersRepository();
+    const UpdateUserAvatar = new UpdateUserAvatarService(usersRepository);
     const user = await UpdateUserAvatar.execute({
       user_id: request.user.id,
       avatarFilename: request.file.filename
