@@ -66,6 +66,30 @@ describe('SendForgotPasswordEmail', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
+  it('shouldn\'t be able to reset the password 2 hours after request', async () => {
+
+    const user = await fakeUsersRepository.create({
+      name: 'Fake Dude',
+      email: 'fake@theycallmewolf.com',
+      password: 'fake-password',
+    });
+
+    const { token } = await fakeUserTokensRepository.generate(user.id);
+
+    jest.spyOn(Date, 'now').mockImplementationOnce(() => {
+      const customDate = new Date();
+
+      return customDate.setHours(customDate.getHours() + 3);
+    })
+
+    await expect(
+      resetPasswordService.execute({
+        password: 'new-fake-password',
+        token
+      })
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
 })
 
 // user not found

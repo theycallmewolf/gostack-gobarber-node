@@ -1,5 +1,7 @@
-import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
+import { isAfter, addHours } from 'date-fns';
+
+import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IUserTokensRepository from '../repositories/IUserTokensRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProviders'
@@ -34,6 +36,13 @@ class ResetPasswordService {
 
     if (!user) {
       throw new AppError('user not found')
+    }
+
+    const tokenCreatedAt = userToken.created_at;
+    const compareDate = addHours(tokenCreatedAt, 2);
+
+    if (isAfter(Date.now(), compareDate)) {
+      throw new AppError('the token has expired');
     }
 
     user.password = await this.hashProvider.generateHash(password);
