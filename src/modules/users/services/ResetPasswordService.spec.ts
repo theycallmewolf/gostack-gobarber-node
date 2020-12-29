@@ -46,8 +46,16 @@ describe('SendForgotPasswordEmail', () => {
     expect(updatedUser?.password).toBe('new-fake-password');
   });
 
+  it('shouldn\'t be able to reset the password without a token', async () => {
+    await expect(
+      resetPasswordService.execute({
+        token: 'non-existing-token',
+        password: 'fake-password',
+      })
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
 })
 
-// user token not found
 // user not found
 // 2h limit
