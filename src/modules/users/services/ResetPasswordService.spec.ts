@@ -40,3 +40,8 @@ describe('SendForgotPasswordEmail', () => {
   });
 
 })
+
+// user token not found
+// user not found
+// password should be hash
+// 2h limit
