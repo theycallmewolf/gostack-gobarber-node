@@ -10,7 +10,7 @@ container.registerSingleton<IStorageProvider>(
   'StorageProvider', DiskStorageProvider,
 )
 
-container.registerSingleton<IMailProvider>(
-  'MailProvider', EtherealMailProvider,
+container.registerInstance<IMailProvider>(
+  'MailProvider', new EtherealMailProvider(),
 )
 
