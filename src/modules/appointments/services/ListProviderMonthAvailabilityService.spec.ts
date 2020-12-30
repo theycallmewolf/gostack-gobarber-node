@@ -11,14 +11,55 @@ describe('ListProviders', () => {
   });
 
   it('should be able to list the provider month availability', async () => {
-    await fakeAppointmentsRepository.create({
-      provider_id: 'user',
-      date: new Date(2020, 10, 30, 8, 0, 0), // 30.11.2020 8:00:00
-    });
 
     await fakeAppointmentsRepository.create({
       provider_id: 'user',
       date: new Date(2020, 11, 30, 8, 0, 0), // 30.12.2020 8:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 9, 0, 0), // 30.12.2020 9:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 10, 0, 0), // 30.12.2020 10:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 11, 0, 0), // 30.12.2020 11:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 12, 0, 0), // 30.12.2020 12:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 13, 0, 0), // 30.12.2020 13:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 14, 0, 0), // 30.12.2020 14:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 15, 0, 0), // 30.12.2020 15:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 16, 0, 0), // 30.12.2020 16:00:00
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 30, 17, 0, 0), // 30.12.2020 17:00:00
     });
 
     await fakeAppointmentsRepository.create({
@@ -42,7 +83,7 @@ describe('ListProviders', () => {
         { day: 28, available: true },
         { day: 29, available: true },
         { day: 30, available: false },
-        { day: 31, available: false },
+        { day: 31, available: true },
       ]),
     );
   });
