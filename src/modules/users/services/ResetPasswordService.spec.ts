@@ -9,7 +9,6 @@ let fakeUserTokensRepository: FakeUserTokensRepository;
 let resetPasswordService: ResetPasswordService;
 let fakeHashProvider: FakeHashProvider;
 
-
 describe('SendForgotPasswordEmail', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
@@ -90,7 +89,4 @@ describe('SendForgotPasswordEmail', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-})
-
-// user not found
-// 2h limit
+});
