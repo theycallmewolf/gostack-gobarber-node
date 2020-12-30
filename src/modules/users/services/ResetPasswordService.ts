@@ -32,7 +32,7 @@ class ResetPasswordService {
     if (!userToken) {
       throw new AppError('token not found')
     }
-    const user = await this.usersRepository.findById(userToken?.user_id);
+    const user = await this.usersRepository.findById(userToken.user_id);
 
     if (!user) {
       throw new AppError('user not found')
