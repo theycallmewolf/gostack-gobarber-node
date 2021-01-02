@@ -12,12 +12,14 @@ describe('ListProviders', () => {
 
   it('should be able to list the daily provider availability', async () => {
     await fakeAppointmentsRepository.create({
-      provider_id: 'user',
+      provider_id: 'user1',
+      user_id: 'user2',
       date: new Date(2021, 0, 4, 14, 0, 0), // 4.1.2021 14:00:00
     });
 
     await fakeAppointmentsRepository.create({
-      provider_id: 'user',
+      provider_id: 'user1',
+      user_id: 'user2',
       date: new Date(2021, 0, 4, 15, 0, 0), // 4.1.2021 15:00:00
     });
 
@@ -26,7 +28,7 @@ describe('ListProviders', () => {
     });
 
     const availability = await listProviderDayAvailability.execute({
-      provider_id: 'user',
+      provider_id: 'user1',
       day: 4,
       year: 2021,
       month: 1,
