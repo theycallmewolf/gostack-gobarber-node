@@ -1,6 +1,6 @@
-import { createConnection } from "typeorm";
+import { createConnections } from "typeorm";
 
-createConnection();
+createConnections();
 
 // in case of not using ormconfig.js
 // createConnection({
