@@ -3,6 +3,8 @@ node_modules
 .prettierignore
 .env 
 ormconfig.json
+coverage/*
+!.gitkeep
 
 #handle temporary folder
 tmp/*
