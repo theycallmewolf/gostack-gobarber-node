@@ -17,7 +17,7 @@ profileRouter.put('/', celebrate({
     email: Joi.string().required().email(),
     old_password: Joi.string(),
     password: Joi.string(),
-    password_confirmation: Joi.string(),
+    password_confirmation: Joi.string().valid(Joi.ref('password')),
   }),
 }), profileController.update);
 

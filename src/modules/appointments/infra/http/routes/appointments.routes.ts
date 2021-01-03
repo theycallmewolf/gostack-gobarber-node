@@ -11,10 +11,10 @@ const providerAppointmentsController = new ProviderAppointmentsController();
 appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.post('/', celebrate({
-  [Segments.BODY]: {
+  [Segments.BODY]: Joi.object().keys({
     provider_id: Joi.string().uuid().required(),
     date: Joi.date(),
-  }
+  })
 }), appointmentsController.create);
 
 appointmentsRouter.get('/me', providerAppointmentsController.index);
