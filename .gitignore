@@ -1,6 +1,8 @@
 node_modules
 .vscode
 .prettierignore
+.env 
+ormconfig.json
 
 #handle temporary folder
 tmp/*
