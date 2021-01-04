@@ -30,7 +30,7 @@ class ListProvidersService {
         except_user_id: user_id,
       });
 
-      console.log('query executada na base de dados Redis');
+      // console.log('query executada na base de dados Redis');
 
       await this.cacheProvider.save(`providers-list:${user_id}`, users);
     }

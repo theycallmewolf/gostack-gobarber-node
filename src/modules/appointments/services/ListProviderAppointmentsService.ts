@@ -39,7 +39,7 @@ class ListProviderAppointmentsService {
         year
       })
 
-      console.log('dados recebidos do PostgreSQL');
+      // console.log('dados recebidos do PostgreSQL');
       await this.cacheProvider.save(cacheKey, appointments);
     }
 
