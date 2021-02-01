@@ -9,3 +9,4 @@ coverage/*
 #handle temporary folder
 tmp/*
 !tmp/.gitkeep
+dist/
