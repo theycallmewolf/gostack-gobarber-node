@@ -62,9 +62,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/app/gostack-gobarber-node
-            ./node_modules/.bin/typeorm migration:run
+          script: cd ~/app/gostack-gobarber-node && ./node_modules/.bin/typeorm migration:run
             
       - name: Restart server
         uses: appleboy/ssh-action@master
